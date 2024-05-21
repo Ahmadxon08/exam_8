@@ -1,0 +1,223 @@
+.body {
+  display: flex;
+  background: #000;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 100px;
+  .body_head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      font-family: Montserrat;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 41.99px;
+      letter-spacing: 0.25px;
+      text-align: center;
+      color: #fff;
+    }
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    height: 56px;
+    border-radius: 4px;
+    border: 1px solid #ffffff3b;
+    input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: inherit;
+      outline: none;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 16px;
+      padding: 0 10px;
+      letter-spacing: 0.15000000596046448px;
+
+      color: #fff;
+      line-height: 21.98px;
+      letter-spacing: 0.10000000149011612px;
+    }
+  }
+
+  .table_head {
+    display: flex;
+    background-color: #87ceeb;
+    width: 100% !important;
+    justify-content: space-between;
+    align-items: center;
+    height: 56.5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    .id {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      width: 100px;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21.98px;
+      letter-spacing: 0.10000000149011612px;
+      span {
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        color: #000;
+        padding-right: 18px;
+      }
+    }
+    .others {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 47%;
+      padding-right: 16px;
+      // padding-left: 125px;
+      .first {
+        padding-left: 20px;
+      }
+      .second {
+        padding-right: 20px;
+      }
+      span {
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21.98px;
+        letter-spacing: 0.10000000149011612px;
+        text-align: left;
+        color: #000;
+      }
+    }
+  }
+  .table_body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    .table_row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 16px !important;
+      border-bottom: 1px solid gray;
+
+      .imgId {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+        .coinInfo {
+          display: block;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          p {
+            font-family: Roboto;
+            font-size: 22px;
+            font-weight: 400;
+            color: #ffffff;
+          }
+          span {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            top: -19px;
+            color: #a9a9a9;
+          }
+        }
+      }
+      .others_body {
+        display: flex;
+        align-items: center;
+        width: 68.3%;
+        justify-content: space-between;
+
+        span {
+          color: white !important;
+        }
+        .price {
+          display: flex;
+
+          justify-content: flex-end;
+          width: 34%;
+
+          span {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20.02px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: right;
+            color: #fff;
+          }
+        }
+        .change {
+          display: flex;
+          width: 22%;
+
+          align-items: center;
+          gap: 22px;
+          justify-content: flex-end;
+
+          // span {
+          //   font-family: Roboto;
+          //   font-size: 14px;
+          //   font-weight: 400;
+          //   line-height: 20.02px;
+          //   letter-spacing: 0.15000000596046448px;
+          //   text-align: right;
+          //   // color: #fff;
+          // }
+        }
+        .market {
+          display: flex;
+          justify-content: flex-end;
+
+          padding-right: 32px;
+          width: 23%;
+          span {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20.02px;
+            letter-spacing: 0.15000000596046448px;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .table_row:hover {
+      background-color: rgba(70, 72, 71, 0.445) !important;
+    }
+  }
+  nav {
+    background-color: #000;
+    ul {
+      li {
+        button {
+          color: #87ceeb !important;
+          span {
+            color: #87ceeb;
+          }
+        }
+      }
+    }
+  }
+}

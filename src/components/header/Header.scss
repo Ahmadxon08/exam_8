@@ -1,0 +1,47 @@
+header {
+  background: #000 !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 111;
+  box-shadow: 1px 1px 4px rgb(57, 56, 56);
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      a {
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        color: #87ceeb;
+      }
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      .select {
+        display: flex;
+        position: relative;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 222;
+      }
+    }
+  }
+}
