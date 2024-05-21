@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
@@ -5,11 +6,11 @@ import { useCryptoContext } from "../../context/Context";
 import axios from "axios";
 import { ChartData } from "../../api/AllApi";
 import Loading from "../loader/Loading";
+import Select from "../selectButton/Select";
 
 const LineChart = ({ coins }) => {
   const [chartData, setChartData] = useState([]);
-  const [days, setDays] = useState(1);
-  const { currency } = useCryptoContext();
+  const { currency , days, setDay } = useCryptoContext();
 
   const fetchChartData = async () => {
     try {
@@ -20,7 +21,6 @@ const LineChart = ({ coins }) => {
       console.log("this is Chart error", error);
     }
   };
-  console.log("this is chart data", chartData);
 
   useEffect(() => {
     fetchChartData();
@@ -86,10 +86,7 @@ const LineChart = ({ coins }) => {
   const series = [
     {
       name: `${coins.name} Price`,
-      data: chartData.map((chart) => ({
-        x: new Date(chart[0]),
-        y: chart[1],
-      })),
+      data: chartData
     },
   ];
 
@@ -118,6 +115,7 @@ const LineChart = ({ coins }) => {
       >
         {}
       </div>
+      <Select/>
     </div>
   );
 };

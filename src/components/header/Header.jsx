@@ -13,7 +13,7 @@ import { useCryptoContext } from "../../context/Context";
 import PlayList from "../../pages/playlists/PlayList";
 
 const Header = () => {
-  const { handleIsOpen, isOpen } = useCryptoContext();
+  const { handleIsOpen } = useCryptoContext();
   const { currency, setCurrency } = useCryptoContext();
   const darkWhite = createTheme({
     palette: {
@@ -23,8 +23,7 @@ const Header = () => {
       type: "dark",
     },
   });
-  console.log(isOpen);
-  console.log(currency);
+
   return (
     <header>
       <ThemeProvider theme={darkWhite}>
@@ -42,19 +41,21 @@ const Header = () => {
                     defaultValue="USD"
                     value={currency}
                     onChange={(e) => setCurrency(e.target.value)}
+                  
                     sx={{
                       width: 80,
                       height: 44,
                       marginLeft: 2,
                       color: "white",
+                      paddingTop: "50px",
                       ".MuiOutlinedInput-notchedOutline": {
-                        borderColor: "black",
+                        border: 0,
                       },
                       "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "black",
+                        border: 0,
                       },
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "black",
+                        border: 0,
                       },
                       ".MuiSelect-select": {
                         color: "white",

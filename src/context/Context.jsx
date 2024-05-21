@@ -7,7 +7,7 @@ import { CoinList, TrendCoins } from "../api/AllApi";
 
 export const AllCryptoContext = createContext();
 export function numberWithCommasToPrice(n) {
-  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return n?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 export const AllCryptoProvider = ({ children }) => {
   const [allCoinList, setAllCoinList] = useState([]);
@@ -16,6 +16,8 @@ export const AllCryptoProvider = ({ children }) => {
   const [trending, setTrending] = useState([]);
   const [currency, setCurrency] = useState("INR");
   const [symbol, setSymbol] = useState("₹");
+  const [days, setDays] = useState(1);
+  const [update, setUpdate] = useState();
   //////////////////watchList//////////
 
   const handleIsOpen = () => {
@@ -57,7 +59,7 @@ export const AllCryptoProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchCoinList();
-  }, [currency]);
+  }, [currency ]);
 
   ///////this is currency funtionality that changes when select is transfered.///////////
   useEffect(() => {
@@ -83,6 +85,8 @@ export const AllCryptoProvider = ({ children }) => {
         isOpen,
         setIsOpen,
         handleIsOpen,
+        days, setDays,
+        update, setUpdate
       }}
     >
       {children}

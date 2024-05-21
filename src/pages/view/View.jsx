@@ -100,7 +100,7 @@ const Market = styled(Typography)(({ theme }) => ({
 const View = () => {
   const { id } = useParams();
   const [coins, setCoins] = useState(null);
-  const { currency, symbol } = useCryptoContext();
+  const { currency, symbol , setUpdate } = useCryptoContext();
 
   const fetchSingleCoinsList = async () => {
     try {
@@ -111,10 +111,20 @@ const View = () => {
       console.error(error);
     }
   };
-  console.log(coins);
+
   useEffect(() => {
     fetchSingleCoinsList();
   }, [id]);
+
+  useEffect(() => {
+    if (coins) {
+      const dataCoin = JSON.parse(localStorage.getItem("savedCoins")) || [];
+      const updatedData = dataCoin.filter((item) => item.id !== coins.id);
+      updatedData.push(coins);
+      localStorage.setItem("savedCoins", JSON.stringify(updatedData));
+      setUpdate(updatedData)
+    }
+  }, [id , coins]);
 
   if (!coins) {
     return (

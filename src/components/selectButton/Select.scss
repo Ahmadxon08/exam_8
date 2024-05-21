@@ -1,0 +1,30 @@
+.select {
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: all .3s;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 180px;
+    height: 41px;
+    color: white;
+    border: 0;
+    border: 1px solid #87ceeb;
+    background-color: inherit;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.5px;
+    text-align: left;
+  }
+  button:hover {
+    background-color: #87ceeb;
+    color: black;
+  }
+}

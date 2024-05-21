@@ -8,7 +8,7 @@
   right: 0;
   left: 0;
   bottom: 10px;
-  height: 100vh !important;
+  height: 101vh !important;
   background-color: rgba(0, 0, 0, 0.411);
   .play_content {
     display: flex;
@@ -36,14 +36,19 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
+      width: 100%;
       overflow-y: scroll;
-      height: 500px;
-      padding: 30px 0;
-
+      border: 1px solid #fff;
+      height: 510px;
+      padding: 20px 3px;
+     
       span {
         display: block;
         align-items: center;
-        color: red;
+        justify-content: center;
+        font-family: Roboto;
+        color: white;
+        margin: 0 auto;
       }
 
       .card {

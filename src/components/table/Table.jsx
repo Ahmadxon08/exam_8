@@ -5,33 +5,25 @@ import {
 } from "../../context/Context";
 import "./Table.scss";
 import { useState, useMemo, useEffect } from "react";
-import { LinearProgress } from "@mui/material";
+import { Alert, LinearProgress, Snackbar } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import { useNavigate } from "react-router-dom";
 import { IoEye } from "react-icons/io5";
 
 const TableComponents = () => {
+  const [open, setOpen] = useState(false);
+  const [remove, setRemove] = useState(false);
+
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
-  const { allCoinList, loading, symbol } = useCryptoContext();
+  const { allCoinList, loading, symbol, update } = useCryptoContext();
   const [savedCoins, setSavedCoins] = useState([]);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedCoins")) || [];
     setSavedCoins(saved);
   }, []);
-
-  const handleSaveToLocalStorage = (crypto) => {
-    let updatedSavedCoins;
-    if (savedCoins.some((coin) => coin.id === crypto.id)) {
-      updatedSavedCoins = savedCoins.filter((coin) => coin.id !== crypto.id);
-    } else {
-      updatedSavedCoins = [...savedCoins, crypto];
-    }
-    localStorage.setItem("savedCoins", JSON.stringify(updatedSavedCoins));
-    setSavedCoins(updatedSavedCoins);
-  };
 
   const isCoinSaved = (cryptoId) => {
     return savedCoins.some((coin) => coin.id === cryptoId);
@@ -86,11 +78,43 @@ const TableComponents = () => {
                       const profit = crypto.price_change_percentage_24h > 0;
                       const saved = isCoinSaved(crypto.id);
                       return (
-                        <div className="table_row" key={crypto.id}>
-                          <div
-                            className="imgId"
-                            onClick={() => navigate(`./coins/${crypto.id}`)}
+                        <div
+                          className="table_row"
+                          onClick={() => navigate(`./coins/${crypto.id}`)}
+                          key={crypto.id}
+                        >
+                          <Snackbar
+                            open={open}
+                            autoHideDuration={2000}
+                            onClose={() => setOpen(false)}
                           >
+                            <Alert
+                              onClose={() => setOpen(false)}
+                              severity="success"
+                              variant="filled"
+                              sx={{ width: "100%" }}
+                            >
+                              Coin is added succesfully to Watchlist!
+                            </Alert>
+                          </Snackbar>
+                          <Snackbar
+                            open={remove}
+                            autoHideDuration={2000}
+                            onClose={() => setRemove(false)}
+                          >
+                            <Alert
+                              onClose={() => setRemove(false)}
+                              // severity="seccess"
+                              variant="filled"
+                              sx={{ width: "100%" }}
+                              style={{
+                                backgroundColor: "red",
+                              }}
+                            >
+                              Coin is removed succesfullyfrom Watchlist!
+                            </Alert>
+                          </Snackbar>
+                          <div className="imgId">
                             <img
                               src={crypto.image}
                               alt={`${crypto.name} image`}
@@ -109,30 +133,35 @@ const TableComponents = () => {
                                 )}
                               </span>
                             </div>
-                            <div className="change">
+                            <div
+                              className="change"
+                              style={{
+                                display: "flex",
+                                width: "35%",
+                                gap: "10px",
+                                alignItems: "center",
+                               
+                                
+                              }}
+                            >
+                              <IoEye
+                                color={saved ? "green" : "white"}
+                                // size={62}
+                                style={{
+                                  width: "30px",
+                                  height: "30px",
+                                }}
+                              />
                               <span
                                 style={{
                                   display: "flex",
-                                  width: "45%",
-                                  gap: "5px",
-                                  alignItems: "center",
-                                  justifyContent: "space-between",
-                                  color: profit ? "rgb(14, 203, 129)" : "red",
+                                  width: "41%",
+                                
+                               
+                                  color: profit ? "rgb(14, 203, 129)" : "#c55454",
                                   fontWeight: "bold",
                                 }}
                               >
-                                <IoEye
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleSaveToLocalStorage(crypto);
-                                  }}
-                                  color={saved ? "green" : "white"}
-                                  // size={62}
-                                  style={{
-                                    width: "30px",
-                                    height: "30px",
-                                  }}
-                                />
                                 {profit && "+"}
                                 {crypto.price_change_percentage_24h?.toFixed(2)}
                                 %
